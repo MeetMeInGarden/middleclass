@@ -23,4 +23,9 @@ public class UtilService {
         System.out.println("result : " + result);
         return result;
     };
+
+    // convert from Json to Map
+    public Map<String, Object> jsonToMap() {
+        return null;
+    }
 }

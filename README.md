@@ -7,8 +7,8 @@
 ## 기술 스텍
 ### Back-End
 - SpringBoot
+- PostgreSQL
 - JPA
-- Redis
 
 ### Front-End
 - Thymeleaf
@@ -21,11 +21,12 @@
 - 한국투자증권 API
 - 공공데이터포털
 
-
+## 사용 고민 중
+- Redis
+- Google sign in
+- Oauth
+- FireBase
 
 #### Header 4
 ##### Header 5
 ###### Header 6
-
-
-  

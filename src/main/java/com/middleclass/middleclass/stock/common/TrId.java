@@ -1,4 +1,4 @@
-package com.middleclass.middleclass.common;
+package com.middleclass.middleclass.stock.common;
 
 public enum TrId {
     FHKST01010100("FHKST01010100"),     // 국내주식시세 - 주식현재가 시세[v1_국내주식-008]

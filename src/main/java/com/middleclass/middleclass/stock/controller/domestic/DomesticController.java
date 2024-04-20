@@ -1,10 +1,8 @@
-package com.middleclass.middleclass.stock;
+package com.middleclass.middleclass.stock.controller.domestic;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.middleclass.middleclass.common.TrId;
+import com.middleclass.middleclass.stock.common.TrId;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("stock")
-public class TestController {
+@RequestMapping("domestic")
+public class DomesticController {
     @Value("#{key['stock.token']}")
     private String TOKEN;
 

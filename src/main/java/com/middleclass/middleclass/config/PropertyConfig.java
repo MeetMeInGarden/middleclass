@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+// property 설정 class
 @Configuration
 public class PropertyConfig {
     @Bean(name = "key")

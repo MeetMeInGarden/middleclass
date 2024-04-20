@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark" />
+    <title>주식현재가 시세</title>
+    <link rel="stylesheet" href="/css/pico-main/css/pico.min.css" />
+</head>
+<!--<body>-->
+<!--    <div th:text="${responseCode}"></div>-->
+<!--    <div th:text="${returnData}"></div>-->
+<!--    <div th:text="${returnData.output}"></div>-->
+<!--    <div th:text="${returnData.output.iscd_stat_cls_code}"></div>-->
+<!--    <main class="container">-->
+<!--        <h1>Hello world!</h1>-->
+<!--    </main>-->
+<!--    <button>Button</button>-->
+<!--</body>-->
+
+<body>
+    <main class="container">
+        <table class="striped" style="border: 1px solid yellow;">
+            <thead>
+            <tr>
+                <th scope="col" width="25%"></th>
+                <th scope="col" width="25%"></th>
+                <th scope="col" width="25%"></th>
+                <th scope="col" width="25%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row" colspan="2" th:text="${'삼성전자(005930) ' + returnData.output.iscd_stat_cls_code}"></th>
+                <td>현재가</td>
+                <td th:text="${returnData.output.stck_prpr}">(전일대비부호(prdy_vrss_sign)에 따라 색깔)</td>
+            </tr>
+            <tr>
+                <th scope="row">최고가</th>
+                <td th:text="${returnData.output.stck_hgpr}"></td>
+                <td>전일대비(전일대비율)</td>
+                <td th:text="${returnData.output.prdy_vrss + '(' + returnData.output.prdy_ctrt + ')'}"></td>
+            </tr>
+            <tr>
+                <th scope="row">최저가</th>
+                <td th:text="${returnData.output.stck_lwpr}"></td>
+                <td>전일</td>
+                <td th:text="${returnData.output.stck_sdpr}"></td>
+            </tr>
+            <tr>
+                <th scope="row">상한가</th>
+                <td th:text="${returnData.output.stck_mxpr}"></td>
+                <td>호가단위</td>
+                <td th:text="${returnData.output.aspr_unit}"></td>
+            </tr>
+            <tr>
+                <th scope="row">하한가</th>
+                <td th:text="${returnData.output.stck_llam}"></td>
+                <td>시가</td>
+                <td th:text="${returnData.output.stck_oprc}"></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th scope="row">VI적용구분코드</th>
+                <td th:text="${returnData.output.vi_cls_code}"></td>
+                <td>시간외단일가VI적용구분코드</td>
+                <td th:text="${returnData.output.ovtm_vi_cls_code}"></td>
+            </tr>
+            </tfoot>
+        </table>
+
+        <!-- 차트 -->
+        <textarea name="valid" aria-invalid="false">
+                차트
+        </textarea>
+
+        <table class="striped" style="border: 1px solid skyblue;">
+            <thead>
+            <tr>
+                <th scope="col" width="25%"></th>
+                <th scope="col" width="25%"></th>
+                <th scope="col" width="25%"></th>
+                <th scope="col" width="25%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">누적거래대금</th>
+                <td th:text="${returnData.output.acml_tr_pbmn}"></td>
+                <td>52주 최고가</td>
+                <td th:text="${returnData.output.w52_hgpr}"></td>
+            </tr>
+            <tr>
+                <th scope="row">누적거래량</th>
+                <td th:text="${returnData.output.acml_vol}"></td>
+                <td>52주 최고가 일자</td>
+                <td th:text="${returnData.output.w52_hgpr_date}"></td>
+            </tr>
+            <tr>
+                <th scope="row">외국인 순매수</th>
+                <td th:text="${returnData.output.frgn_ntby_qty}"></td>
+                <td>52주 최저가</td>
+                <td th:text="${returnData.output.w52_lwpr}"></td>
+            </tr>
+            <tr>
+                <th scope="row">프로그램 순매수</th>
+                <td th:text="${returnData.output.pgtr_ntby_qty}"></td>
+                <td>52주 최저가 일자</td>
+                <td th:text="${returnData.output.w52_lwpr_date}"></td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+        <details>
+            <summary role="button" class="outline">more</summary>
+            <table class="striped" style="border: 1px solid greenyellow;">
+                <thead>
+                <tr>
+                    <th scope="col" width="25%"></th>
+                    <th scope="col" width="25%"></th>
+                    <th scope="col" width="25%"></th>
+                    <th scope="col" width="25%"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">연중최고가</th>
+                    <td th:text="${returnData.output.stck_dryy_hgpr}"></td>
+                    <td>업종</td>
+                    <td th:text="${returnData.output.bstp_kor_isnm}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">연중최고가일자</th>
+                    <td th:text="${returnData.output.dryy_hgpr_date}"></td>
+                    <td>상장 주수</td>
+                    <td th:text="${returnData.output.lstn_stcn}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">연중최저가</th>
+                    <td th:text="${returnData.output.stck_dryy_lwpr}"></td>
+                    <td>HTS 시가총액(한국투자증권 기준)</td>
+                    <td th:text="${returnData.output.hts_avls}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">연중최저가일자</th>
+                    <td th:text="${returnData.output.dryy_lwpr_date}"></td>
+                    <td>PER</td>
+                    <td th:text="${returnData.output.per}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">공매도가능여부</th>
+                    <td th:text="${returnData.output.ssts_yn}"></td>
+                    <td>PBR</td>
+                    <td th:text="${returnData.output.pbr}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">투자유의여부</th>
+                    <td th:text="${returnData.output.invt_caful_yn}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">단기과열여부</th>
+                    <td th:text="${returnData.output.short_over_yn}"></td>
+                </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </details>
+    </main>
+</body>
+</html>
